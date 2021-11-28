@@ -1,0 +1,33 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
+    <CsWinRTWindowsMetadata>10.0.22000.0+</CsWinRTWindowsMetadata>
+    <AssetTargetFallback>uap10.0.22000</AssetTargetFallback>
+    <CsWinRTFilters>
+      -exclude Windows
+      -include Microsoft
+    </CsWinRTFilters>
+    <Platforms>x64</Platforms>
+    <RuntimeIdentifiers>win-x64</RuntimeIdentifiers>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Remove="Microsoft.Windows.SDK.NET.Ref" />
+    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.0.0-private.0" />
+    <ProjectReference Include="..\Windows\Windows.csproj" />
+    <PackageReference Include="Microsoft.UI.Xaml" Version="2.8.0-prerelease.210927001" GeneratePathProperty="true">
+      <ExcludeAssets>build; buildtransitive; compile; runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1018-prerelease" GeneratePathProperty="true">
+      <ExcludeAssets>build; buildtransitive; compile; runtime</ExcludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!--Explicitly reference WinUI winmds from TFM uap10.0-->
+    <CsWinRTInputs Include="$([MSBuild]::NormalizeDirectory('$(NuGetPackageRoot)', 'Microsoft.UI.Xaml', '2.8.0-prerelease.210927001'))/**/*.winmd" />
+    <CsWinRTInputs Include="$([MSBuild]::NormalizeDirectory('$(NuGetPackageRoot)', 'Microsoft.Web.WebView2', '1.0.1018-prerelease'))/**/*.winmd" />
+  </ItemGroup>
+
+</Project>

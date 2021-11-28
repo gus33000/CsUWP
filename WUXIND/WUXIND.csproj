@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows10.0.22000.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>WUXIND</RootNamespace>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x86;x64;arm64</Platforms>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <DefineConstants>$(DefineConstants);DISABLE_XAML_GENERATED_MAIN</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="app.manifest">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App.xbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AppxManifest.xml" CopyToOutputDirectory="Always" />
+    <Content Include="MainPage.xbf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources.pri">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\**" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Remove="Microsoft.Windows.SDK.NET.Ref" />
+    <None Remove="app.manifest" />
+    <None Remove="App.xbf" />
+    <None Remove="MainPage.xbf" />
+    <None Remove="resources.pri" />
+    <Reference Include="Microsoft.Windows.Full.SDK.NET">
+      <HintPath>$(SolutionDir)\nupkgs\Microsoft.Windows.Full.SDK.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="WinRT.Runtime">
+      <HintPath>$(SolutionDir)\nupkgs\WinRT.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Update="Assets\LockScreenLogo.scale-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\SplashScreen.scale-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Square150x150Logo.scale-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Square44x44Logo.scale-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\StoreLogo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Assets\Wide310x150Logo.scale-200.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  
+  <!--<Target Name="MakePri" AfterTargets="Build">
+    <Exec Command="&quot;$(MSBuildProgramFiles32)\Windows Kits\10\bin\$(TargetPlatformVersion)\x86\MakePri.exe&quot; new /pr $(OutputPath) /cf priconfig.xml /of $(OutputPath)resources.pri /o" />
+  </Target>
+
+  <Target Name="RegisterManifest" AfterTargets="MakePri">
+    <Exec Command="PowerShell Add-AppxPackage -Register $(OutputPath)AppxManifest.xml" />
+  </Target>-->
+
+  <Target Name="RegisterManifest" AfterTargets="Build">
+    <Exec Command="PowerShell Add-AppxPackage -Register $(OutputPath)AppxManifest.xml" />
+  </Target>
+</Project>

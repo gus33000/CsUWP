@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31903.286
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CsUWP", "CsUWP\CsUWP.csproj", "{5A61877E-94BE-4385-B3A5-6B11DFEFADD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WUXIND", "WUXIND\WUXIND.csproj", "{5A61877E-94BE-4385-B3A5-6B11DFEFADD7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projections", "Projections", "{D9ABA701-0BA2-4D20-802F-67CEEBA6A60A}"
 EndProject

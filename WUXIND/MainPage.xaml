@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="WUXIND.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Windows.UI.Xaml is not dead" FontSize="22" TextWrapping="Wrap" />
+            <TextBlock Text="Oh and hello from a Page!" FontSize="22" TextWrapping="Wrap" />
+            <Button Content="Wait we can do more than one window?" Click="Button_Click" />
+        </StackPanel>
+    </Grid>
+</Page>
